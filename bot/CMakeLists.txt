@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0)
-set (CMAKE_CXX_STANDARD 11)
+set (CMAKE_CXX_STANDARD 17)
 
 project (TradingBot)
 
@@ -29,12 +29,15 @@ MACRO(SUBDIRLIST result curdir)
   ENDFOREACH()
   SET(${result} ${dirlist})
 ENDMACRO()
-SUBDIRLIST(SUBDIRS src)
-SUBDIRLIST(SUBDIRS build)
+include_directories(SUBDIRLIST(SUBDIRS src))
+include_directories(SUBDIRLIST(SUBDIRS build))
 
 include_directories(${CMAKE_SOURCE_DIR}/build/lib/src/yaml-cpp/include)
 file(GLOB LIBRARIES "${CMAKE_SOURCE_DIR}/build/lib/src/yaml-cpp-build/*.dylib")
 message("LIBRARIES = ${LIBRARIES}")
 
-add_executable(bot src/main.cpp)
+file(GLOB_RECURSE SOURCES ${CMAKE_SOURCE_DIR}/src/*.cpp)
+message("SOURCES = ${SOURCES}")
+
+add_executable(bot ${SOURCES})
 target_link_libraries(bot ${LIBRARIES})
