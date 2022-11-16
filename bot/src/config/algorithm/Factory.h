@@ -8,17 +8,9 @@
 #include "Algorithm.h"
 #include "SimpleAlgorithm.h"
 #include "Type.h"
-#include "yaml-cpp/node/node.h"
+#include "yaml-cpp/yaml.h"
 namespace config {
-Algorithm LoadAlgorithmConfig(YAML::Node config) {
-    AlgoType algo_name = config["type"].as<AlgoType>();
-    switch (algo_name) {
-        case AlgoType::SIMPLE_ALGO:
-            return SimpleAlgorithm(config);
-        default:
-            return Algorithm(config);
-    }
-}
-};  // namespace Config::Local
+std::shared_ptr<Algorithm> LoadAlgorithmConfig(YAML::Node config);
+};  // namespace config
 
 #endif

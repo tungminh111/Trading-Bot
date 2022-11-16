@@ -3,9 +3,9 @@
 
 #include <string>
 
-#include "../../util/String.h"
+#include "util/String.h"
 #include "Type.h"
-#include "yaml-cpp/node/node.h"
+#include "yaml-cpp/yaml.h"
 
 namespace config {
 class Algorithm {
@@ -18,7 +18,7 @@ class Algorithm {
 
     Algorithm() {}
 
-    explicit Algorithm(YAML::Node config) {}
+    explicit Algorithm(YAML::Node config);
 };
 };  // namespace config
 

@@ -14,10 +14,7 @@ class SimpleAlgorithm : public Algorithm {
     using super = Algorithm;
     AlgoType algo_type() const override { return AlgoType::SIMPLE_ALGO; }
 
-    explicit SimpleAlgorithm(YAML::Node config) : Algorithm(config) {
-        observe_sticks =
-            config["observe_sticks"].as<decltype(observe_sticks)>();
-    };
+    explicit SimpleAlgorithm(YAML::Node config);
 
     std::string DebugMsg() override {
         return util::string::FormatString("%s, observe_sticks: %d",

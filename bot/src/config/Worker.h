@@ -3,7 +3,6 @@
 
 #include <algorithm>
 #include <memory>
-#include <ostream>
 #include <string>
 #include <variant>
 
@@ -29,18 +28,18 @@ class Worker : public Config {
 
         reader = LoadReaderConfig(config["reader"]);
 
-        output = CombinedOutput(config["output"]);
+        output = std::make_shared<CombinedOutput>(config["output"]);
     }
 
     std::string DebugMsg() override {
         return util::string::FormatString(
-            "Reader: %s; Algorithm: %s; Output: %s", reader.DebugMsg().c_str(),
-            algorithm.DebugMsg().c_str(), output.DebugMsg().c_str());
+            "Reader: %s; Algorithm: %s; Output: %s", reader->DebugMsg().c_str(),
+            algorithm->DebugMsg().c_str(), output->DebugMsg().c_str());
     }
 
-    Reader reader;
-    Algorithm algorithm;
-    CombinedOutput output;
+    std::shared_ptr<Reader> reader;
+    std::shared_ptr<Algorithm> algorithm;
+    std::shared_ptr<CombinedOutput> output;
 };
 
 }  // namespace config

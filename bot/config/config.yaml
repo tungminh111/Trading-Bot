@@ -1,0 +1,17 @@
+account:
+  username: tungminh111
+  password: nguyennhatminhvip99@
+algorithm:
+  type: 1
+  observe_sticks: 5
+reader:
+  type: 1
+  file_path: "input"
+  cur_time: 1666310400000
+  kline_interval: 60000
+output:
+  enable_calling_api: false 
+  file_writer:
+    dummy: dummy
+  api_caller:
+    dummy: dummy
