@@ -3,14 +3,14 @@
 
 #include <memory>
 
-#include "../config/reader/Reader.h"
-#include "../entity/Kline.h"
+#include "config/reader/Reader.h"
+#include "entity/Kline.h"
 namespace reader {
 class Reader {
    public:
     explicit Reader(const std::shared_ptr<config::Reader>& config)
         : config(config) {}
-    //virtual Kline next_kline() = 0;
+    virtual Kline NextKline() {};
     // virtual void CurrentOrderBook() = 0;
    private:
     std::shared_ptr<config::Reader> config;

@@ -1,13 +1,13 @@
 #ifndef DATA_READER_CONFIG
 #define DATA_READER_CONFIG
 
-#include <sys/_types/_time_t.h>
+#include <time.h>
 
 #include <ctime>
 #include <string>
 
-#include "util/String.h"
 #include "Type.h"
+#include "util/String.h"
 #include "yaml-cpp/yaml.h"
 namespace config {
 class Reader {

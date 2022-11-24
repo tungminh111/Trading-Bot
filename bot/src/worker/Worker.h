@@ -3,11 +3,11 @@
 
 #include <memory>
 
-#include "../account/Account.h"
-#include "../algorithm/Algorithm.h"
-#include "../config/Worker.h"
-#include "../maker/Maker.h"
-#include "../reader/Reader.h"
+#include "account/Account.h"
+#include "algorithm/Algorithm.h"
+#include "config/Worker.h"
+#include "maker/Maker.h"
+#include "reader/Reader.h"
 
 namespace worker {
 class Worker {

@@ -7,7 +7,8 @@ enum class ReaderType {
     BASE_READER,
     FILE_READER,
 };
-};
+
+};  // namespace config
 
 namespace YAML {
 template <>

@@ -5,7 +5,7 @@
 
 #include "Algorithm.h"
 #include "Type.h"
-#include "../../util/String.h"
+#include "util/String.h"
 #include "yaml-cpp/node/node.h"
 
 namespace config {

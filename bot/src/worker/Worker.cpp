@@ -1,10 +1,12 @@
+#include "config/Worker.h"
+
+#include <iostream>
 #include <memory>
 
+#include "Worker.h"
 #include "algorithm/Action.h"
-#include "config/Worker.h"
 #include "entity/Kline.h"
 #include "reader/Factory.h"
-#include "Worker.h"
 
 namespace worker {
 Worker::Worker(const std::shared_ptr<config::Worker>& config) {
@@ -12,11 +14,8 @@ Worker::Worker(const std::shared_ptr<config::Worker>& config) {
 }
 
 void Worker::run() {
-    while (true) {
-        // auto data = this->reader_->next_kline();
-        // auto action_data = this->algorithm_->take_action(data);
-        // this->maker_->take_action(action_data);
-    }
+    std::cout << this->reader_->NextKline().DebugMsg() << std::endl;
+    std::cout << this->reader_->NextKline().DebugMsg() << std::endl;
 }
 
 }  // namespace worker

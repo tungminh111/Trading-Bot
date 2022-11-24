@@ -1,7 +1,7 @@
 #ifndef MAKER
 #define MAKER
 
-#include "../algorithm/Action.h"
+#include "algorithm/Action.h"
 #include "APIWriter.h"
 #include "Logger.h"
 

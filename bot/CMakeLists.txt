@@ -22,10 +22,19 @@ file (
     
 message("SOURCES = ${SOURCES}")
 
+file (
+    GLOB_RECURSE
+    HEADERS
+    #main
+    ${CMAKE_SOURCE_DIR}/src/*.h
+)
+    
+message("HEADERS = ${HEADERS}")
+
 find_package(yaml-cpp REQUIRED)
 
 message("INCLUDE ${YAML_CPP_INCLUDE_DIR}")
 include_directories(${YAML_CPP_INCLUDE_DIR})
 
-add_executable(bot ${SOURCES})
+add_executable(bot ${SOURCES} ${HEADERS})
 target_link_libraries(bot yaml-cpp)

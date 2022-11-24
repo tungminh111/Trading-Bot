@@ -33,7 +33,7 @@ class Worker : public Config {
 
     std::string DebugMsg() override {
         return util::string::FormatString(
-            "Reader: %s; Algorithm: %s; Output: %s", reader->DebugMsg().c_str(),
+            "Reader: %s\n Algorithm: %s\n Output: %s\n", reader->DebugMsg().c_str(),
             algorithm->DebugMsg().c_str(), output->DebugMsg().c_str());
     }
 
