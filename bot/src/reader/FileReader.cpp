@@ -2,6 +2,7 @@
 
 #include <assert.h>
 
+#include "entity/Kline.h"
 #include "reader/schema/Binance.h"
 #include "util/File.h"
 namespace reader {
@@ -9,8 +10,9 @@ const time_t kEndTime = -1;
 
 FileReader::FileReader(const std::shared_ptr<config::FileReader>& config)
     : Reader(config), config_(config) {
-    this->schema_ =
-        std::make_unique<schema::Binance>();  // todo: create schema factory
+    // factory
+
+    this->schema_ = std::make_unique<schema::Binance>();  // TODO: create schema
 
     for (const auto& entry :
          std::filesystem::directory_iterator(config->file_path)) {
@@ -34,7 +36,7 @@ void FileReader::initFile() {
     bool found = false;
     std::string content;
     while (!found && getline(this->cur_fstream_, content)) {
-        this->next_content = this->schema_->ToKline(content);
+        this->next_content = this->schema_->ToData(content);
         if (this->next_content.open_tm > this->config_->cur_time) {
             found = true;
             break;
@@ -59,7 +61,7 @@ void FileReader::nextFile() {
 void FileReader::prepareNextContext() {
     std::string content;
     if (std::getline(this->cur_fstream_, content)) {
-        this->next_content = this->schema_->ToKline(content);
+        this->next_content = this->schema_->ToData(content);
         return;
     }
 
@@ -67,7 +69,7 @@ void FileReader::prepareNextContext() {
     if (this->HasFinishedAllFiles()) return;
 
     std::getline(this->cur_fstream_, content);
-    this->next_content = this->schema_->ToKline(content);
+    this->next_content = this->schema_->ToData(content);
 }
 
 Kline FileReader::NextKline() {
@@ -90,13 +92,10 @@ bool FileReader::HasFinishedAllFiles() {
     return this->config_->cur_time == kEndTime;
 }
 
-FileReader::~FileReader() {
-    this->closeFile();
-}
+FileReader::~FileReader() { this->closeFile(); }
 
 void FileReader::closeFile() {
-    if (this->cur_fstream_.is_open())
-        this->cur_fstream_.close();
+    if (this->cur_fstream_.is_open()) this->cur_fstream_.close();
 }
 
 }  // namespace reader

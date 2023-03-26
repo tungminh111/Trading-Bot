@@ -8,7 +8,7 @@ namespace reader::schema {
 class Schema {
    public:
     Schema(){};
-    virtual Kline ToKline(std::string raw_input){};
+    virtual Kline ToData(std::string raw_input){};
 };
 }  // namespace reader::schema
 

@@ -24,20 +24,21 @@ class FileReader : public Reader {
 
     Kline NextKline() override;
 
+    ~FileReader();
+
    private:
     void initFile();
     void nextFile();
     void openFile(const std::string& path);
     void closeFile();
     void prepareNextContext();
-    ~FileReader();
 
     // for checking if still have data ahead
     Kline next_content;
     std::fstream cur_fstream_;
     std::shared_ptr<config::FileReader> config_;
     std::map<time_t, std::string> file_map_;
-    std::unique_ptr<schema::Schema> schema_;
+    std::unique_ptr<schema::Schema> schema_;  // TODO: hardcode
 };
 }  // namespace reader
 

@@ -6,13 +6,15 @@
 #include <string>
 
 #include "Schema.h"
+#include "entity/Kline.h"
 
 namespace reader::schema {
 class Binance : public Schema {
    public:
-    Binance();
-    Kline ToKline(std::string raw_input) override;
+    explicit Binance();
+    Kline ToData(std::string raw_input) override;
 };
+
 }  // namespace reader::schema
 
 #endif

@@ -4,11 +4,11 @@
 #include <sstream>
 
 #include "util/ReaderSchema.h"
-
 namespace reader::schema {
-Binance::Binance(){};
 
-Kline Binance::ToKline(std::string raw_input) {
+Binance::Binance() {}
+
+Kline Binance::ToData(std::string raw_input) {
     std::stringstream ss(raw_input);
     time_t open_tm = util::readerschema::GetNextItem<time_t>(ss);
     double open_price = util::readerschema::GetNextItem<double>(ss);
@@ -31,5 +31,4 @@ Kline Binance::ToKline(std::string raw_input) {
     ret.trade_qty = trade_qty;
     return ret;
 }
-
 }  // namespace reader::schema
