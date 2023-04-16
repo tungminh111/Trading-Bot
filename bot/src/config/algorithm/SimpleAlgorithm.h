@@ -17,7 +17,7 @@ class SimpleAlgorithm : public Algorithm {
     explicit SimpleAlgorithm(YAML::Node config);
 
     std::string DebugMsg() override {
-        return util::string::FormatString("%s, observe_sticks: %d",
+        return util::string::FormatString("{%s, observe_sticks: %d}",
                                           super::DebugMsg().c_str(),
                                           observe_sticks);
     }

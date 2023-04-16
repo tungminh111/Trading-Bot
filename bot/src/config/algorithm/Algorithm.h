@@ -13,7 +13,7 @@ class Algorithm {
     virtual AlgoType algo_type() const { return AlgoType::BASE_ALGO; };
 
     virtual std::string DebugMsg() {
-        return util::string::FormatString("algo_type: %d", this->algo_type());
+        return util::string::FormatString("{algo_type: %d}", this->algo_type());
     }
 
     Algorithm() {}

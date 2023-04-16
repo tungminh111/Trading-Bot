@@ -13,13 +13,13 @@ enum class ReaderType {
 namespace YAML {
 template <>
 struct convert<config::ReaderType> {
-    static Node encode(const config::ReaderType& rhs) {
+    static Node encode(const config::ReaderType &rhs) {
         Node node;
         node.push_back((int)rhs);
         return node;
     }
 
-    static bool decode(const Node& node, config::ReaderType& rhs) {
+    static bool decode(const Node &node, config::ReaderType &rhs) {
         rhs = static_cast<config::ReaderType>(node.as<int>());
         return true;
     }

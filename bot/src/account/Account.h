@@ -1,15 +1,21 @@
 #ifndef ACCOUNT
 #define ACCOUNT
 
+#include "config/account/Account.h"
+#include "entity/BalanceInfo.h"
+#include <memory>
 #include <string>
 
+namespace account {
 class Account {
-       public:
-	virtual void init_connection() = 0;
-	std::string get_access_token() { return access_token_; }
+public:
+  explicit Account(const std::shared_ptr<config::Account> &config);
+  BalanceInfo get_balance_info();
 
-       private:
-	std::string access_token_;
+private:
+  std::shared_ptr<config::Account> config_;
+  std::string access_token_;
 };
+} // namespace account
 
 #endif

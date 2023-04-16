@@ -38,3 +38,5 @@ include_directories(${YAML_CPP_INCLUDE_DIR})
 
 add_executable(bot ${SOURCES} ${HEADERS})
 target_link_libraries(bot yaml-cpp)
+
+

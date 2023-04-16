@@ -18,7 +18,7 @@ class FileReader : public Reader {
     explicit FileReader(YAML::Node config);
 
     std::string DebugMsg() override {
-        return util::string::FormatString("%s, file_path: %s, cur_time: %lld",
+        return util::string::FormatString("{%s, file_path: %s, cur_time: %lld}",
                                           super::DebugMsg().c_str(),
                                           file_path.c_str(), cur_time);
     }

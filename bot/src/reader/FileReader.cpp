@@ -58,7 +58,7 @@ void FileReader::nextFile() {
     this->openFile(next_entry->second);
 }
 
-void FileReader::prepareNextContext() {
+void FileReader::prepareNextContent() {
     std::string content;
     if (std::getline(this->cur_fstream_, content)) {
         this->next_content = this->schema_->ToData(content);
@@ -72,13 +72,13 @@ void FileReader::prepareNextContext() {
     this->next_content = this->schema_->ToData(content);
 }
 
-Kline FileReader::NextKline() {
+Kline FileReader::NextKline(time_t cur_time) {
     assert(!this->HasFinishedAllFiles());
 
     Kline ret = this->next_content;
     this->config_->cur_time = ret.open_tm;
 
-    prepareNextContext();
+    prepareNextContent();
     return ret;
 }
 

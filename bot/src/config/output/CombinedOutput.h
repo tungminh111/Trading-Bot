@@ -26,7 +26,7 @@ class CombinedOutput {
 
     std::string DebugMsg() {
         return util::string::FormatString(
-            "enable_calling_api: %s. FileWriter: %s. APICaller: %s.",
+            "{enable_calling_api: %s, FileWriter: %s, APICaller: %s}",
             enable_calling_api ? "true": "false", file_writer.DebugMsg().c_str(),
             api_caller.DebugMsg().c_str());
     }

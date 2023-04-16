@@ -1,6 +1,11 @@
 account:
+  type: 1
   username: tungminh111
   password: nguyennhatminhvip99@
+  balance_info: 
+    asset_infos:
+      - type: "BTC"
+        balance: 1000.12
 algorithm:
   type: 1
   observe_sticks: 5

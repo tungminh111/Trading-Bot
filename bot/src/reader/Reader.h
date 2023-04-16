@@ -7,14 +7,14 @@
 #include "entity/Kline.h"
 namespace reader {
 class Reader {
-   public:
-    explicit Reader(const std::shared_ptr<config::Reader>& config)
-        : config(config) {}
-    virtual Kline NextKline() {};
-    // virtual void CurrentOrderBook() = 0;
-   private:
-    std::shared_ptr<config::Reader> config;
+public:
+  explicit Reader(const std::shared_ptr<config::Reader> &config)
+      : config(config) {}
+  virtual Kline NextKline(time_t cur_time){};
+  // virtual void CurrentOrderBook() = 0;
+private:
+  std::shared_ptr<config::Reader> config;
 };
-}  // namespace reader
+} // namespace reader
 
 #endif

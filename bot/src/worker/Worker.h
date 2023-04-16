@@ -11,16 +11,16 @@
 
 namespace worker {
 class Worker {
-   public:
-    explicit Worker(const std::shared_ptr<config::Worker>& config);
-    void run();
+public:
+  explicit Worker(const std::shared_ptr<config::Worker> &config);
+  void run();
 
-   private:
-    std::unique_ptr<reader::Reader> reader_;
-    std::unique_ptr<Account> account_;
-    std::unique_ptr<Maker> maker_;
-    std::unique_ptr<Algorithm> algorithm_;
+private:
+  std::unique_ptr<reader::Reader> reader_;
+  std::unique_ptr<Maker> maker_;
+  std::unique_ptr<account::Account> account_;
+  std::unique_ptr<algorithm::Algorithm> algorithm_;
 };
-}  // namespace worker
+} // namespace worker
 
 #endif

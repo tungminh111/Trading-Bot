@@ -9,6 +9,6 @@
 #include "yaml-cpp/node/node.h"
 namespace config {
 std::shared_ptr<Reader> LoadReaderConfig(YAML::Node config);
-}  // namespace Config
+} // namespace config
 
 #endif
