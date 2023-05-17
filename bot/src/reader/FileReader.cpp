@@ -79,6 +79,7 @@ Kline FileReader::NextKline(time_t cur_time) {
     this->config_->cur_time = ret.open_tm;
 
     prepareNextContent();
+    this->repo_->AppendData(ret);
     return ret;
 }
 

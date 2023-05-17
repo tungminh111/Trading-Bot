@@ -8,7 +8,10 @@ namespace algorithm {
 class SimpleAlgorithm : public Algorithm {
 public:
   explicit SimpleAlgorithm(const std::shared_ptr<config::SimpleAlgorithm> &cfg);
-  ActionData take_action(BalanceInfo balance_info, Kline data) override;
+  OrderData take_action(BalanceInfo balance_info, Kline data) override;
+
+private: 
+
 };
 } // namespace algorithm
 

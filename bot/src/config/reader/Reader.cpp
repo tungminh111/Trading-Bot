@@ -2,6 +2,6 @@
 
 namespace config {
 Reader::Reader(YAML::Node config) {
-    kline_interval = config["kline_interval"].as<decltype(kline_interval)>();
+  interval = config["interval"].as<decltype(interval)>();
 }
-}  // namespace config
+} // namespace config

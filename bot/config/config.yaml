@@ -13,7 +13,7 @@ reader:
   type: 1
   file_path: "input"
   cur_time: 1666310300009
-  kline_interval: 60001
+  interval: 60001
 output:
   enable_calling_api: false 
   file_writer:

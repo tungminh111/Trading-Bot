@@ -10,7 +10,10 @@ class Reader {
 public:
   explicit Reader(const std::shared_ptr<config::Reader> &config)
       : config(config) {}
+
   virtual Kline NextKline(time_t cur_time){};
+
+  time_t getInterval() { return config->interval; };
   // virtual void CurrentOrderBook() = 0;
 private:
   std::shared_ptr<config::Reader> config;

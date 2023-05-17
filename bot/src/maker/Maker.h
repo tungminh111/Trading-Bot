@@ -9,7 +9,7 @@ class Maker {
        public:
 	Maker(Logger* logger, APIWriter* writer)
 	    : logger_(logger), api_writer_(writer) {}
-	void take_action(ActionData data);
+	void take_action(OrderData data);
 
        private:
 	Logger* logger_;

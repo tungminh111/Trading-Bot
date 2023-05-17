@@ -14,34 +14,36 @@
 #include "Reader.h"
 #include "config/reader/FileReader.h"
 #include "reader/schema/Schema.h"
+#include "repo/FileRepo.h"
 
 namespace reader {
 class FileReader : public Reader {
-public:
-  explicit FileReader(const std::shared_ptr<config::FileReader> &config);
+   public:
+    explicit FileReader(const std::shared_ptr<config::FileReader> &config);
 
-  bool HasFinishedAllFiles();
+    bool HasFinishedAllFiles();
 
-  // cur_time doesn't affect FileReader. This function just get
-  // the nextKline after the previous one
-  Kline NextKline(time_t cur_time) override;
+    // cur_time doesn't affect FileReader. This function just get
+    // the nextKline after the previous one
+    Kline NextKline(time_t cur_time) override;
 
-  ~FileReader();
+    ~FileReader();
 
-private:
-  void initFile();
-  void nextFile();
-  void openFile(const std::string &path);
-  void closeFile();
-  void prepareNextContent();
+   private:
+    void initFile();
+    void nextFile();
+    void openFile(const std::string &path);
+    void closeFile();
+    void prepareNextContent();
 
-  // for checking if still have data ahead
-  Kline next_content;
-  std::fstream cur_fstream_;
-  std::shared_ptr<config::FileReader> config_;
-  std::map<time_t, std::string> file_map_;
-  std::unique_ptr<schema::Schema> schema_; // TODO: hardcode
+    // for checking if still have data ahead
+    Kline next_content;
+    std::fstream cur_fstream_;
+    std::shared_ptr<config::FileReader> config_;
+    std::map<time_t, std::string> file_map_;
+    std::unique_ptr<schema::Schema> schema_;  // TODO: hardcode
+    std::shared_ptr<repo::FileRepo> repo_;
 };
-} // namespace reader
+}  // namespace reader
 
 #endif

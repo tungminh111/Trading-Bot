@@ -19,11 +19,11 @@ public:
   explicit Reader(YAML::Node config);
 
   virtual std::string DebugMsg() {
-    return util::string::FormatString("{reader_type: %d, kline_interval: %d}",
-                                      reader_type(), kline_interval);
+    return util::string::FormatString("{\"reader_type\": %d, \"interval\": %d}",
+                                      reader_type(), interval);
   }
 
-  std::time_t kline_interval;
+  std::time_t interval;
 };
 }; // namespace config
 #endif
